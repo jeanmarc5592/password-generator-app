@@ -5,7 +5,7 @@
       <base-typography>Password Generator</base-typography>
     </div>
     <!-- PASSWORD RESULT -->
-    <div class="result-container">
+    <div class="result-container" :class="resultContainerClasses">
       <base-typography variant="heading-large">
         {{ password }}
       </base-typography>
@@ -25,6 +25,11 @@ export default {
       return this.generatedPassword.length > 0
         ? this.generatedPassword
         : "P4$5W0rD!";
+    },
+    resultContainerClasses() {
+      return {
+        "no-result": this.generatedPassword.length === 0,
+      };
     },
   },
 };
@@ -47,5 +52,9 @@ export default {
 .result-container {
   background-color: $color-black-light;
   padding: 1rem 2rem;
+}
+
+.no-result {
+  color: $color-grey-dark;
 }
 </style>
