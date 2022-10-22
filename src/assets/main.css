@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "JetBrainsMono";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: local("JetBrainsMono"),
+    url("/fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype"),
+    url("/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf") format("truetype"),
+    url("/fonts/static/JetBrainsMono-Bold.ttf") format("truetype"),
+    url("/fonts/static/JetBrainsMono-BoldItalic.ttf") format("truetype");
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "JetBrainsMono", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
