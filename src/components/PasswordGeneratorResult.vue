@@ -1,8 +1,10 @@
 <template>
   <div class="result-container" :class="resultContainerClasses">
-    <base-typography variant="heading-large">
-      {{ password }}
-    </base-typography>
+    <div class="result">
+      <base-typography variant="heading-large">
+        {{ password }}
+      </base-typography>
+    </div>
     <div class="copy-container">
       <base-typography v-if="isCopied">COPIED</base-typography>
       <button class="copy-button" @click="copyPassword">
@@ -34,11 +36,11 @@ export default {
   },
   methods: {
     copyPassword() {
-      // TODO: Copy Password to clipboard
       if (this.generatedPassword.length === 0) {
         // TODO: Implement Error Message
         return;
       }
+      // TODO: Copy Password to clipboard
       this.isCopied = true;
       setTimeout(() => {
         this.isCopied = false;
@@ -55,6 +57,13 @@ export default {
   justify-content: space-between;
   background-color: $color-black-light;
   padding: 1rem 2rem;
+
+  .result {
+    max-width: 55%;
+    @media (min-width: 768px) {
+      max-width: 70%;
+    }
+  }
 }
 
 .no-result {
