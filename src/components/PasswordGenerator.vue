@@ -4,33 +4,26 @@
     <div class="heading-container">
       <base-typography>Password Generator</base-typography>
     </div>
-    <!-- PASSWORD RESULT -->
-    <div class="result-container" :class="resultContainerClasses">
-      <base-typography variant="heading-large">
-        {{ password }}
-      </base-typography>
-    </div>
+    <password-generator-result></password-generator-result>
   </div>
 </template>
 
 <script>
+import PasswordGeneratorResult from "./PasswordGeneratorResult.vue";
+
 export default {
+  components: {
+    PasswordGeneratorResult,
+  },
+  provide() {
+    return {
+      generatedPassword: this.generatedPassword,
+    };
+  },
   data() {
     return {
       generatedPassword: "",
     };
-  },
-  computed: {
-    password() {
-      return this.generatedPassword.length > 0
-        ? this.generatedPassword
-        : "P4$5W0rD!";
-    },
-    resultContainerClasses() {
-      return {
-        "no-result": this.generatedPassword.length === 0,
-      };
-    },
   },
 };
 </script>
@@ -46,15 +39,6 @@ export default {
 .heading-container {
   margin-bottom: 2rem;
   text-align: center;
-  color: $color-grey-dark;
-}
-
-.result-container {
-  background-color: $color-black-light;
-  padding: 1rem 2rem;
-}
-
-.no-result {
   color: $color-grey-dark;
 }
 </style>
