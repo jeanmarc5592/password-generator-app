@@ -3,15 +3,23 @@
     <base-typography variant="heading-large">
       {{ password }}
     </base-typography>
-    <button class="copy-container" @click="copyPassword">
-      <base-copy-icon></base-copy-icon>
-    </button>
+    <div class="copy-container">
+      <base-typography v-if="isCopied">COPIED</base-typography>
+      <button class="copy-button" @click="copyPassword">
+        <base-copy-icon></base-copy-icon>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   inject: ["generatedPassword"],
+  data() {
+    return {
+      isCopied: false,
+    };
+  },
   computed: {
     password() {
       return this.generatedPassword.length > 0
@@ -31,7 +39,10 @@ export default {
         // TODO: Implement Error Message
         return;
       }
-      alert(this.generatedPassword);
+      this.isCopied = true;
+      setTimeout(() => {
+        this.isCopied = false;
+      }, 2000);
     },
   },
 };
@@ -53,8 +64,15 @@ export default {
 .copy-container {
   display: flex;
   align-items: center;
+  color: $color-green;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
   cursor: pointer;
   background-color: transparent;
   border: none;
+  margin-left: 0.5rem;
 }
 </style>
