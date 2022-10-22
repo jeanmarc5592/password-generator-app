@@ -17,19 +17,19 @@ export default {
 
 <style lang="scss" scoped>
 .heading-large {
-  font-size: 2rem;
+  font-size: $heading-large;
   line-height: 43px;
   font-weight: bold;
 }
 
 .heading-medium {
-  font-size: 1.5rem;
+  font-size: $heading-medium;
   line-height: 31px;
   font-weight: bold;
 }
 
 .body {
-  font-size: 1.125rem;
+  font-size: $body;
   line-height: 23px;
   font-weight: bold;
 }
