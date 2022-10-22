@@ -3,6 +3,9 @@
     <base-typography variant="heading-large">
       {{ password }}
     </base-typography>
+    <button @click="copyPassword" class="copy-container">
+      <base-copy-icon></base-copy-icon>
+    </button>
   </div>
 </template>
 
@@ -21,16 +24,37 @@ export default {
       };
     },
   },
+  methods: {
+    copyPassword() {
+      // TODO: Copy Password to clipboard
+      if (this.generatedPassword.length === 0) {
+        // TODO: Implement Error Message
+        return;
+      }
+      alert(this.generatedPassword);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .result-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: $color-black-light;
   padding: 1rem 2rem;
 }
 
 .no-result {
   color: $color-grey-dark;
+}
+
+.copy-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 </style>
