@@ -3,7 +3,7 @@
     <base-typography variant="heading-large">
       {{ password }}
     </base-typography>
-    <button @click="copyPassword" class="copy-container">
+    <button class="copy-container" @click="copyPassword">
       <base-copy-icon></base-copy-icon>
     </button>
   </div>
