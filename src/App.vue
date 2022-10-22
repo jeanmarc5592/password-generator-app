@@ -1,3 +1,3 @@
 <template>
-  <h1>Password Generator App</h1>
+  <base-typography>Password Generator App</base-typography>
 </template>
