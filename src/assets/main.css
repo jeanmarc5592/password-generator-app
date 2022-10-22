@@ -22,7 +22,7 @@
 body {
   min-height: 100vh;
   font-family: "JetBrainsMono", "Helvetica Neue", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
