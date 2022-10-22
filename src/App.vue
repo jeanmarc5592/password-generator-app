@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PasswordGenerator from "./modules/password-generator/components/PasswordGenerator.vue";
+import PasswordGenerator from "./components/PasswordGenerator.vue";
 
 export default {
   components: { PasswordGenerator },
