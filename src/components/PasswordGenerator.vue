@@ -4,16 +4,21 @@
     <div class="heading-container">
       <base-typography>Password Generator</base-typography>
     </div>
-    <password-generator-result></password-generator-result>
+    <!-- RESULT -->
+    <password-generator-result />
+    <!-- CONTROLS -->
+    <password-generator-controls />
   </div>
 </template>
 
 <script>
 import PasswordGeneratorResult from "./PasswordGeneratorResult.vue";
+import PasswordGeneratorControls from "./PasswordGeneratorControls.vue";
 
 export default {
   components: {
     PasswordGeneratorResult,
+    PasswordGeneratorControls,
   },
   provide() {
     return {

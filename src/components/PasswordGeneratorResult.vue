@@ -57,6 +57,11 @@ export default {
   justify-content: space-between;
   background-color: $color-black-light;
   padding: 1rem 2rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 
   .result {
     max-width: 55%;
