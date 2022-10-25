@@ -23,12 +23,20 @@ export default {
   provide() {
     return {
       generatedPassword: this.generatedPassword,
+      generatePassword: this.generatePassword,
     };
   },
   data() {
     return {
       generatedPassword: "",
+      passwordLength: 0,
     };
+  },
+  methods: {
+    generatePassword(formData) {
+      // TODO: Generate Password
+      console.log(formData);
+    },
   },
 };
 </script>
