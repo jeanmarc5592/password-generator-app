@@ -33,14 +33,6 @@ export default {
       passwordLength: 0,
     };
   },
-  // mounted() {
-  //   const slider = document.getElementById("password-length-slider");
-  //   slider.addEventListener("mousemove", () => {
-  //     const value = this.passwordLength;
-  //     const backgroundColor = `linear-gradient(90deg, #A4FFAF) ${value}%, #18171F ${value}%`;
-  //     slider.style.backgroundColor = backgroundColor;
-  //   });
-  // },
   methods: {
     submitForm() {
       const formData = {
