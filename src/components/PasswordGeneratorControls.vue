@@ -13,7 +13,7 @@
         v-model="passwordLength"
         type="range"
         min="0"
-        max="32"
+        :max="maxPasswordLength"
         class="slider"
       />
     </div>
@@ -68,9 +68,17 @@ export default {
   inject: ["generatePassword"],
   data() {
     return {
+      maxPasswordLength: 32,
       passwordLength: 0,
       passwordContent: [],
     };
+  },
+  watch: {
+    passwordLength(newLength) {
+      const slider = document.getElementById("password-length-slider");
+      const percent = (newLength / this.maxPasswordLength) * 100;
+      slider.style.background = `linear-gradient(to right, #A4FFAF ${percent}%, #18171F ${percent}%)`;
+    },
   },
   methods: {
     submitForm() {
