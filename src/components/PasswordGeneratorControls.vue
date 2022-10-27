@@ -18,6 +18,44 @@
       />
     </div>
     <!-- Checkboxes -->
+    <div class="checkboxes-container">
+      <div class="checkbox-group">
+        <input
+          v-model="passwordContent"
+          type="checkbox"
+          value="hasUppercaseLetters"
+          name="hasUppercaseLetters"
+        />
+        <base-typography>Include Uppercase Letters</base-typography>
+      </div>
+      <div class="checkbox-group">
+        <input
+          v-model="passwordContent"
+          type="checkbox"
+          value="hasLowercaseLetters"
+          name="hasLowercaseLetters"
+        />
+        <base-typography>Include Lowercase Letters</base-typography>
+      </div>
+      <div class="checkbox-group">
+        <input
+          v-model="passwordContent"
+          type="checkbox"
+          value="hasNumbers"
+          name="hasNumbers"
+        />
+        <base-typography>Include Numbers</base-typography>
+      </div>
+      <div class="checkbox-group">
+        <input
+          v-model="passwordContent"
+          type="checkbox"
+          value="hasSymbols"
+          name="hasSymbols"
+        />
+        <base-typography>Include Symbols</base-typography>
+      </div>
+    </div>
 
     <!-- Strength Display -->
 
@@ -31,14 +69,17 @@ export default {
   data() {
     return {
       passwordLength: 0,
+      passwordContent: [],
     };
   },
   methods: {
     submitForm() {
       const formData = {
         passwordLength: this.passwordLength,
+        passwordContent: this.passwordContent,
       };
       this.generatePassword(formData);
+      console.log(formData.passwordContent);
     },
   },
 };
@@ -92,6 +133,30 @@ export default {
 
   &::-moz-range-progress {
     background: $color-green;
+  }
+}
+
+.checkboxes-container {
+  margin: 2rem 0;
+
+  & .checkbox-group {
+    display: flex;
+
+    & input {
+      margin-right: 1.5rem;
+      height: 20px;
+      width: 20px;
+      accent-color: $color-green;
+      cursor: pointer;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 1.25rem;
+      }
+    }
   }
 }
 </style>
