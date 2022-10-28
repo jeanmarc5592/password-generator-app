@@ -7,17 +7,6 @@
   </svg>
 </template>
 
-<script>
-export default {
-  props: {
-    iconColor: {
-      type: String,
-      default: "#A4FFAF",
-    },
-  },
-};
-</script>
-
 <style lang="scss" scoped>
 svg:hover {
   path {
