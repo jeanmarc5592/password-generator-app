@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <form class="controls-container" @submit.prevent="submitForm">
     <!-- Length Slider -->
@@ -56,8 +57,24 @@
         <base-typography>Include Symbols</base-typography>
       </div>
     </div>
-
     <!-- Strength Display -->
+    <div class="strength-container">
+      <base-typography>STRENGTH</base-typography>
+      <div>
+        <div class="strength-rating">
+          <base-typography
+            v-if="passwordStrength !== null"
+            variant="heading-medium"
+          >
+            {{ passwordStrength }}
+          </base-typography>
+          <div class="strength-rating-box" :class="strengthLevelOneClass"></div>
+          <div class="strength-rating-box" :class="strengthLevelTwoClass"></div>
+          <div class="strength-rating-box" :class="strengthLevelThreeClass"></div>
+          <div class="strength-rating-box" :class="strengthLevelFourlass"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- CTA Button -->
   </form>
@@ -71,7 +88,36 @@ export default {
       maxPasswordLength: 32,
       passwordLength: 0,
       passwordContent: [],
+      passwordStrength: null,
     };
+  },
+  computed: {
+    strengthLevelOneClass() {
+      return {
+        "red-bg": this.passwordStrength === "TOO WEAK!",
+        "orange-bg": this.passwordStrength === "WEAK",
+        "yellow-bg": this.passwordStrength === "MEDIUM",
+        "green-bg": this.passwordStrength === "STRONG",
+      };
+    },
+    strengthLevelTwoClass() {
+      return {
+        "orange-bg": this.passwordStrength === "WEAK",
+        "yellow-bg": this.passwordStrength === "MEDIUM",
+        "green-bg": this.passwordStrength === "STRONG",
+      };
+    },
+    strengthLevelThreeClass() {
+      return {
+        "yellow-bg": this.passwordStrength === "MEDIUM",
+        "green-bg": this.passwordStrength === "STRONG",
+      };
+    },
+    strengthLevelFourlass() {
+      return {
+        "green-bg": this.passwordStrength === "STRONG",
+      };
+    },
   },
   watch: {
     passwordLength(newLength) {
@@ -164,6 +210,52 @@ export default {
       @media (min-width: 768px) {
         margin-bottom: 1.25rem;
       }
+    }
+  }
+}
+
+.strength-container {
+  background: $color-black-dark;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > p {
+    color: $color-grey-dark;
+  }
+
+  .strength-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin-right: 1rem;
+    }
+    .strength-rating-box {
+      width: 10px;
+      height: 28px;
+      border: 2px solid $color-grey-dark;
+      &:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+    }
+    .red-bg {
+      background-color: $color-red;
+      border: 2px solid $color-red;
+    }
+    .orange-bg {
+      background-color: $color-orange;
+      border: 2px solid $color-orange;
+    }
+    .yellow-bg {
+      background-color: $color-yellow;
+      border: 2px solid $color-yellow;
+    }
+    .green-bg {
+      background-color: $color-green;
+      border: 2px solid $color-green;
     }
   }
 }
