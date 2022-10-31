@@ -151,6 +151,10 @@ export default {
       const slider = document.getElementById("password-length-slider");
       const percent = (newLength / this.maxPasswordLength) * 100;
       slider.style.background = `linear-gradient(to right, #A4FFAF ${percent}%, #18171F ${percent}%)`;
+      this.calcPasswordStrength();
+    },
+    passwordContent() {
+      this.calcPasswordStrength();
     },
   },
   methods: {
@@ -161,6 +165,29 @@ export default {
         passwordStrength: this.passwordStrength,
       };
       this.generatePassword(formData);
+    },
+    calcPasswordStrength() {
+      const passwordLengthAsInt = parseInt(this.passwordLength);
+      if (this.passwordContent.length == 0 || passwordLengthAsInt == 0) {
+        this.passwordStrength = null;
+        return;
+      }
+      if (this.passwordContent.length == 1 || passwordLengthAsInt <= 6) {
+        this.passwordStrength = PASSWORD_STRENGHTS["TOO WEAK!"];
+        return;
+      }
+      if (this.passwordContent.length == 2 || passwordLengthAsInt <= 8) {
+        this.passwordStrength = PASSWORD_STRENGHTS.WEAK;
+        return;
+      }
+      if (this.passwordContent.length == 3 || passwordLengthAsInt <= 12) {
+        this.passwordStrength = PASSWORD_STRENGHTS.MEDIUM;
+        return;
+      }
+      if (this.passwordContent.length == 4 || passwordLengthAsInt <= 16) {
+        this.passwordStrength = PASSWORD_STRENGHTS.STRONG;
+        return;
+      }
     },
   },
 };
