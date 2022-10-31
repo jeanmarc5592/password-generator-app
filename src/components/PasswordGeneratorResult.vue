@@ -43,7 +43,7 @@ export default {
         // TODO: Implement Error Message
         return;
       }
-      // TODO: Copy Password to clipboard
+      navigator.clipboard.writeText(this.result);
       this.isCopied = true;
       setTimeout(() => {
         this.isCopied = false;
