@@ -83,8 +83,8 @@
       class="submit-button"
       type="submit"
       :disabled="isSubmitBtnDisabled"
-      @mouseover="isGenerateHovered = true"
-      @mouseleave="isGenerateHovered = false"
+      @mouseover="submitBtnMouseOver"
+      @mouseleave="submitBtnMouseLeave"
     >
       <span>GENERATE</span>
       <base-arrow-right-icon
@@ -111,6 +111,7 @@ export default {
   },
   data() {
     return {
+      isMobile: false,
       isGenerateHovered: false,
       maxPasswordLength: 16,
       passwordLength: 0,
@@ -169,7 +170,24 @@ export default {
       this.calcPasswordStrength();
     },
   },
+  created() {
+    window.addEventListener("resize", this.checkMobileBreakpoint);
+    this.checkMobileBreakpoint();
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkMobileBreakpoint);
+    this.checkMobileBreakpoint();
+  },
   methods: {
+    submitBtnMouseOver() {
+      return this.isMobile ? null : (this.isGenerateHovered = true);
+    },
+    submitBtnMouseLeave() {
+      return this.isMobile ? null : (this.isGenerateHovered = false);
+    },
+    checkMobileBreakpoint() {
+      this.isMobile = window.matchMedia("(max-width: 412px)").matches;
+    },
     submitForm() {
       const formData = {
         passwordLength: this.passwordLength,
@@ -367,10 +385,12 @@ export default {
   }
 
   &:hover {
-    background: $color-black-dark;
-    border: 2px solid $color-green;
-    color: $color-green;
-    transition: all 0.3s ease-out;
+    @media (hover: hover) {
+      background: $color-black-dark;
+      border: 2px solid $color-green;
+      color: $color-green;
+      transition: all 0.3s ease-out;
+    }
   }
 
   &:disabled {
