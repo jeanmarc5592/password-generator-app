@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       generatedPassword: "",
-      passwordLength: 0,
     };
   },
   methods: {
