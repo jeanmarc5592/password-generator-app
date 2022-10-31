@@ -82,6 +82,7 @@
     <button
       class="submit-button"
       type="submit"
+      :disabled="isSubmitBtnDisabled"
       @mouseover="isGenerateHovered = true"
       @mouseleave="isGenerateHovered = false"
     >
@@ -118,6 +119,12 @@ export default {
         return "#A4FFAF";
       }
       return "#18171F";
+    },
+    isSubmitBtnDisabled() {
+      if (this.passwordStrength === null) {
+        return true;
+      }
+      return false;
     },
     strengthLevelOneClass() {
       return {
@@ -339,6 +346,17 @@ export default {
     border: 2px solid $color-green;
     color: $color-green;
     transition: all 0.3s ease-out;
+  }
+
+  &:disabled {
+    cursor: default;
+    background: rgba($color-green, 0.2);
+
+    &:hover {
+      color: $color-black-dark;
+      background: rgba($color-green, 0.2);
+      border: 2px solid transparent;
+    }
   }
 }
 </style>
