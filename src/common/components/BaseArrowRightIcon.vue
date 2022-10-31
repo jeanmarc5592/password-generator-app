@@ -1,17 +1,13 @@
 <template>
-  <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    id="arrow-right-icon"
+    width="12"
+    height="12"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
-      fill="#24232C"
+      fill="#18171F"
       d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
     />
   </svg>
 </template>
-
-<style lang="scss" scoped>
-svg:hover {
-  path {
-    fill: $color-grey-light;
-    transition: all 0.3s;
-  }
-}
-</style>
