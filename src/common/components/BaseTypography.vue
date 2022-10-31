@@ -18,21 +18,6 @@ export default {
 <style lang="scss" scoped>
 .paragraph {
   font-weight: bold;
-  text-overflow: clip;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-::-webkit-scrollbar {
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: $color-black-dark;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $color-grey-dark;
 }
 .heading-large {
   font-size: $heading-medium;
