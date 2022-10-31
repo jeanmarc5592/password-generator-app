@@ -35,8 +35,13 @@ export default {
   background: $color-grey-dark;
 }
 .heading-large {
-  font-size: $heading-large;
-  line-height: 43px;
+  font-size: $heading-medium;
+  line-height: 31px;
+
+  @media (min-width: 768px) {
+    font-size: $heading-large;
+    line-height: 43px;
+  }
 }
 
 .heading-medium {

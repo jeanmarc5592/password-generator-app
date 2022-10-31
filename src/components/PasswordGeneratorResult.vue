@@ -59,15 +59,16 @@ export default {
   align-items: center;
   justify-content: space-between;
   background-color: $color-black-light;
-  padding: 1rem 2rem;
+  padding: 1rem;
   margin-bottom: 1rem;
 
   @media (min-width: 768px) {
     margin-bottom: 1.5rem;
+    padding: 1rem 2rem;
   }
 
   .result {
-    max-width: 55%;
+    max-width: 65%;
     @media (min-width: 768px) {
       max-width: 70%;
     }

@@ -9,9 +9,11 @@
 
 <style lang="scss" scoped>
 svg:hover {
-  path {
-    fill: $color-grey-light;
-    transition: all 0.3s;
+  @media (hover: hover) {
+    path {
+      fill: $color-grey-light;
+      transition: all 0.3s;
+    }
   }
 }
 </style>

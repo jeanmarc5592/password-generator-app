@@ -208,7 +208,12 @@ export default {
 <style lang="scss" scoped>
 .controls-container {
   background-color: $color-black-light;
-  padding: 1rem 2rem;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 1.5rem;
+    padding: 1rem 2rem;
+  }
 }
 
 .slider-head-container {
@@ -263,11 +268,15 @@ export default {
     display: flex;
 
     & input {
-      margin-right: 1.5rem;
+      margin-right: 1rem;
       height: 20px;
       width: 20px;
       accent-color: $color-green;
       cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      margin-right: 1.5rem;
     }
 
     &:not(:last-child) {
@@ -282,7 +291,7 @@ export default {
 
 .strength-container {
   background: $color-black-dark;
-  padding: 1.5rem 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -294,6 +303,7 @@ export default {
 
   @media (min-width: 768px) {
     margin-bottom: 2rem;
+    padding: 1rem 2rem;
   }
 
   .strength-rating {
@@ -302,7 +312,13 @@ export default {
     align-items: center;
 
     p {
-      margin-right: 1rem;
+      margin-right: 0.5rem;
+      font-size: $body;
+
+      @media (min-width: 768px) {
+        margin-right: 1rem;
+        font-size: $heading-medium;
+      }
     }
     .strength-rating-box {
       width: 10px;
@@ -337,10 +353,14 @@ export default {
   background: $color-green;
   border: 2px solid transparent;
   border-radius: 0;
-  padding: 1.25rem;
+  padding: 1rem;
   width: 100%;
   cursor: pointer;
   transition: all 0.3s ease-out;
+
+  @media (min-width: 768px) {
+    padding: 1.25rem;
+  }
 
   span {
     margin-right: 1.5rem;
