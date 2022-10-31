@@ -70,13 +70,19 @@
           </base-typography>
           <div class="strength-rating-box" :class="strengthLevelOneClass"></div>
           <div class="strength-rating-box" :class="strengthLevelTwoClass"></div>
-          <div class="strength-rating-box" :class="strengthLevelThreeClass"></div>
+          <div
+            class="strength-rating-box"
+            :class="strengthLevelThreeClass"
+          ></div>
           <div class="strength-rating-box" :class="strengthLevelFourlass"></div>
         </div>
       </div>
     </div>
-
     <!-- CTA Button -->
+    <button class="submit-button" type="submit">
+      <span>GENERATE</span>
+      <base-arrow-right-icon></base-arrow-right-icon>
+    </button>
   </form>
 </template>
 
@@ -131,9 +137,9 @@ export default {
       const formData = {
         passwordLength: this.passwordLength,
         passwordContent: this.passwordContent,
+        passwordStrength: this.passwordStrength,
       };
       this.generatePassword(formData);
-      console.log(formData.passwordContent);
     },
   },
 };
@@ -220,9 +226,14 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 
   & > p {
     color: $color-grey-dark;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 2rem;
   }
 
   .strength-rating {
@@ -257,6 +268,29 @@ export default {
       background-color: $color-green;
       border: 2px solid $color-green;
     }
+  }
+}
+
+.submit-button {
+  font-size: $body;
+  color: $color-black-dark;
+  background: $color-green;
+  border: 2px solid transparent;
+  border-radius: 0;
+  padding: 1.25rem;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  span {
+    margin-right: 1.5rem;
+  }
+
+  &:hover {
+    background: $color-black-dark;
+    border: 2px solid $color-green;
+    color: $color-green;
+    transition: all 0.3s ease-out;
   }
 }
 </style>
