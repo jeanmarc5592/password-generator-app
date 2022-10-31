@@ -16,7 +16,12 @@
 
 <script>
 export default {
-  inject: ["generatedPassword"],
+  props: {
+    result: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       isCopied: false,
@@ -24,19 +29,17 @@ export default {
   },
   computed: {
     password() {
-      return this.generatedPassword.length > 0
-        ? this.generatedPassword
-        : "P4$5W0rD!";
+      return this.result.length > 0 ? this.result : "P4$5W0rD!";
     },
     resultContainerClasses() {
       return {
-        "no-result": this.generatedPassword.length === 0,
+        "no-result": this.result.length === 0,
       };
     },
   },
   methods: {
     copyPassword() {
-      if (this.generatedPassword.length === 0) {
+      if (this.result.length === 0) {
         // TODO: Implement Error Message
         return;
       }

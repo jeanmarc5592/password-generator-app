@@ -5,9 +5,9 @@
       <base-typography>Password Generator</base-typography>
     </div>
     <!-- RESULT -->
-    <password-generator-result />
+    <password-generator-result :result="generatedPassword" />
     <!-- CONTROLS -->
-    <password-generator-controls />
+    <password-generator-controls :generate="generatePassword" />
   </div>
 </template>
 
@@ -15,16 +15,15 @@
 import PasswordGeneratorResult from "./PasswordGeneratorResult.vue";
 import PasswordGeneratorControls from "./PasswordGeneratorControls.vue";
 
+const UPPERCASE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const LOWERCASE_LETTERS = "abcdefghijklmnopqrstuvwxyz";
+const NUMBERS = "0123456789";
+const SYMBOLS = "!§$%&/()=?+*#";
+
 export default {
   components: {
     PasswordGeneratorResult,
     PasswordGeneratorControls,
-  },
-  provide() {
-    return {
-      generatedPassword: this.generatedPassword,
-      generatePassword: this.generatePassword,
-    };
   },
   data() {
     return {
@@ -33,8 +32,27 @@ export default {
   },
   methods: {
     generatePassword(formData) {
-      // TODO: Generate Password
-      console.log(formData);
+      const userChoices = JSON.parse(JSON.stringify(formData.passwordContent));
+      const passwordLength = parseInt(formData.passwordLength);
+      let contents = "";
+      let result = "";
+
+      const hasUppercase = userChoices.includes("hasUppercaseLetters");
+      const hasLowercase = userChoices.includes("hasLowercaseLetters");
+      const haseNumbers = userChoices.includes("hasNumbers");
+      const hasSymbols = userChoices.includes("hasSymbols");
+
+      if (hasUppercase) contents += UPPERCASE_LETTERS;
+      if (hasLowercase) contents += LOWERCASE_LETTERS;
+      if (haseNumbers) contents += NUMBERS;
+      if (hasSymbols) contents += SYMBOLS;
+
+      while (result.length < passwordLength) {
+        const randomIndex = Math.floor(Math.random() * contents.length);
+        result += contents[randomIndex];
+      }
+
+      this.generatedPassword = result;
     },
   },
 };

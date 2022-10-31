@@ -103,7 +103,12 @@ const PASSWORD_STRENGHTS = Object.freeze({
 });
 
 export default {
-  inject: ["generatePassword"],
+  props: {
+    generate: {
+      type: Function,
+      required: true,
+    },
+  },
   data() {
     return {
       isGenerateHovered: false,
@@ -171,7 +176,7 @@ export default {
         passwordContent: this.passwordContent,
         passwordStrength: this.passwordStrength,
       };
-      this.generatePassword(formData);
+      this.generate(formData);
     },
     calcPasswordStrength() {
       const passwordLengthAsInt = parseInt(this.passwordLength);
