@@ -61,6 +61,7 @@ export default {
 <style lang="scss" scoped>
 .main-container {
   width: 343px;
+  position: fixed;
   @media (min-width: 768px) {
     width: 540px;
   }
