@@ -79,9 +79,14 @@
       </div>
     </div>
     <!-- CTA Button -->
-    <button class="submit-button" type="submit">
+    <button
+      class="submit-button"
+      type="submit"
+      @mouseover="isGenerateHovered = true"
+      @mouseleave="isGenerateHovered = false"
+    >
       <span>GENERATE</span>
-      <base-arrow-right-icon></base-arrow-right-icon>
+      <base-arrow-right-icon :fill="arrowRightIconColor"></base-arrow-right-icon>
     </button>
   </form>
 </template>
@@ -91,6 +96,7 @@ export default {
   inject: ["generatePassword"],
   data() {
     return {
+      isGenerateHovered: false,
       maxPasswordLength: 32,
       passwordLength: 0,
       passwordContent: [],
@@ -98,6 +104,12 @@ export default {
     };
   },
   computed: {
+    arrowRightIconColor() {
+      if (this.isGenerateHovered) {
+        return "#A4FFAF";
+      }
+      return "#18171F";
+    },
     strengthLevelOneClass() {
       return {
         "red-bg": this.passwordStrength === "TOO WEAK!",
