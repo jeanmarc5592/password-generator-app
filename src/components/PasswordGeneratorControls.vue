@@ -86,18 +86,27 @@
       @mouseleave="isGenerateHovered = false"
     >
       <span>GENERATE</span>
-      <base-arrow-right-icon :fill="arrowRightIconColor"></base-arrow-right-icon>
+      <base-arrow-right-icon
+        :fill="arrowRightIconColor"
+      ></base-arrow-right-icon>
     </button>
   </form>
 </template>
 
 <script>
+const PASSWORD_STRENGHTS = Object.freeze({
+  "TOO WEAK!": "TOO WEAK!",
+  WEAK: "WEAK",
+  MEDIUM: "MEDIUM",
+  STRONG: "STRONG",
+});
+
 export default {
   inject: ["generatePassword"],
   data() {
     return {
       isGenerateHovered: false,
-      maxPasswordLength: 32,
+      maxPasswordLength: 16,
       passwordLength: 0,
       passwordContent: [],
       passwordStrength: null,
@@ -112,28 +121,28 @@ export default {
     },
     strengthLevelOneClass() {
       return {
-        "red-bg": this.passwordStrength === "TOO WEAK!",
-        "orange-bg": this.passwordStrength === "WEAK",
-        "yellow-bg": this.passwordStrength === "MEDIUM",
-        "green-bg": this.passwordStrength === "STRONG",
+        "red-bg": this.passwordStrength === PASSWORD_STRENGHTS["TOO WEAK!"],
+        "orange-bg": this.passwordStrength === PASSWORD_STRENGHTS.WEAK,
+        "yellow-bg": this.passwordStrength === PASSWORD_STRENGHTS.MEDIUM,
+        "green-bg": this.passwordStrength === PASSWORD_STRENGHTS.STRONG,
       };
     },
     strengthLevelTwoClass() {
       return {
-        "orange-bg": this.passwordStrength === "WEAK",
-        "yellow-bg": this.passwordStrength === "MEDIUM",
-        "green-bg": this.passwordStrength === "STRONG",
+        "orange-bg": this.passwordStrength === PASSWORD_STRENGHTS.WEAK,
+        "yellow-bg": this.passwordStrength === PASSWORD_STRENGHTS.MEDIUM,
+        "green-bg": this.passwordStrength === PASSWORD_STRENGHTS.STRONG,
       };
     },
     strengthLevelThreeClass() {
       return {
-        "yellow-bg": this.passwordStrength === "MEDIUM",
-        "green-bg": this.passwordStrength === "STRONG",
+        "yellow-bg": this.passwordStrength === PASSWORD_STRENGHTS.MEDIUM,
+        "green-bg": this.passwordStrength === PASSWORD_STRENGHTS.STRONG,
       };
     },
     strengthLevelFourlass() {
       return {
-        "green-bg": this.passwordStrength === "STRONG",
+        "green-bg": this.passwordStrength === PASSWORD_STRENGHTS.STRONG,
       };
     },
   },
